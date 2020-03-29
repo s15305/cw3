@@ -28,7 +28,8 @@ namespace cw3.Controllers
             return Ok(_dbService.GetStudents());
         }
 
-        /*
+        /* ZAKOMENOTWANE Z POWODU ZBIERZNOŚCI NAZW
+
          [HttpGet]
          public string GetStudents(string orderBy)
          {
