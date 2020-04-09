@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cw3.DAL
 {
-    public class MockDbService : IDbService
+    /*public class MockDbService : IDbService
     {
         private static IEnumerable<Student> _students;
 
@@ -23,5 +23,5 @@ namespace cw3.DAL
         {
             return _students;
         }
-    }
+    }*/
 }
