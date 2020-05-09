@@ -21,7 +21,7 @@ namespace cw3.Controllers
             _dbService = dbService;
         }
 
-        
+       /* stare
         [HttpGet]
 
         public IActionResult GetStudents(string orderBy)
@@ -33,7 +33,7 @@ namespace cw3.Controllers
         public IActionResult GetEnrollmentForStudent(int numerIndeksu)
         {
             return Ok(_dbService.GetStudent(numerIndeksu));
-        }
+        }*/
         [HttpPost]
 
          public IActionResult CreateStudent(Student student)
