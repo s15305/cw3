@@ -12,64 +12,64 @@ namespace cw3.DAL
     {
         private string sqlConnectionData = "Data Source=(localdb)\\db-mssql;Initial Catalog=s15305;Integrated Security=True";
 
-        //Miłe wspomnienia 
-     /*  public IEnumerable<Student> GetStudents()
-        {
-            var output = new List<Student>();
-            using (var connection = new SqlConnection(sqlConnectionData))
-            {
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Student";
-                    connection.Open();
-                    var dr = command.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        output.Add(new Student
-                        {
-                            IndexNumber = dr["IndexNumber"].ToString(),
-                            FirstName = dr["FirstName"].ToString(),
-                            LastName = dr["LastName"].ToString(),
-                            BirthDate = DateTime.Parse(dr["BirthDate"].ToString()),
-                            IdEnrollment = int.Parse(dr["IdEnrollment"].ToString()),
-                        });
-                    }
-                }
-            }
-            return output;
-        }
+        //cw4 Miłe wspomnienia 
+        /* public IEnumerable<Student> GetStudents()
+          {
+              var output = new List<Student>();
+              using (var connection = new SqlConnection(sqlConnectionData))
+              {
+                  using (var command = new SqlCommand())
+                  {
+                      command.Connection = connection;
+                      command.CommandText = "SELECT * FROM Student";
+                      connection.Open();
+                      var dr = command.ExecuteReader();
+                      while (dr.Read())
+                      {
+                          output.Add(new Student
+                          {
+                              IndexNumber = dr["IndexNumber"].ToString(),
+                              FirstName = dr["FirstName"].ToString(),
+                              LastName = dr["LastName"].ToString(),
+                              BirthDate = DateTime.Parse(dr["BirthDate"].ToString()),
+                              IdEnrollment = int.Parse(dr["IdEnrollment"].ToString()),
+                          });
+                      }
+                  }
+              }
+              return output;
+          }
 
-        public IEnumerable<Enrollment> GetStudent(int indexNumber)
-        {
-            List<Enrollment> enrollments = new List<Enrollment>();
-            using (var connection = new SqlConnection(sqlConnectionData))
-            {
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Enrollment e " +
-                                          "INNER JOIN Student s " +
-                                          "ON e.IdEnrollment = s.IdEnrollment " +
-                                          "WHERE s.IndexNumber = @indexNumber;";
+          public IEnumerable<Enrollment> GetStudent(int indexNumber)
+          {
+              List<Enrollment> enrollments = new List<Enrollment>();
+              using (var connection = new SqlConnection(sqlConnectionData))
+              {
+                  using (var command = new SqlCommand())
+                  {
+                      command.Connection = connection;
+                      command.CommandText = "SELECT * FROM Enrollment e " +
+                                            "INNER JOIN Student s " +
+                                            "ON e.IdEnrollment = s.IdEnrollment " +
+                                            "WHERE s.IndexNumber = @indexNumber;";
 
-                    command.Parameters.AddWithValue("indexNumber", indexNumber);
-                    connection.Open();
-                    var dr = command.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        var enrollment = new Enrollment();
-                        enrollment.IdEnrollment = int.Parse(dr["IdEnrollment"].ToString());
-                        enrollment.Semester = int.Parse(dr["Semester"].ToString());
-                        enrollment.IdStudy = int.Parse(dr["IdStudy"].ToString());
-                        enrollment.StartDate = DateTime.Parse(dr["StartDate"].ToString());
-                        enrollments.Add(enrollment);
-                    }
-                    return enrollments;
-                }
-            }
-        }
-        */
+                      command.Parameters.AddWithValue("indexNumber", indexNumber);
+                      connection.Open();
+                      var dr = command.ExecuteReader();
+                      while (dr.Read())
+                      {
+                          var enrollment = new Enrollment();
+                          enrollment.IdEnrollment = int.Parse(dr["IdEnrollment"].ToString());
+                          enrollment.Semester = int.Parse(dr["Semester"].ToString());
+                          enrollment.IdStudy = int.Parse(dr["IdStudy"].ToString());
+                          enrollment.StartDate = DateTime.Parse(dr["StartDate"].ToString());
+                          enrollments.Add(enrollment);
+                      }
+                      return enrollments;
+                  }
+              }
+          }*/
+        //cw5 Miłe wspomnienia
         public Enrollment EnrollStudent(EnrollStudentRequest request)
         {
 
@@ -114,7 +114,7 @@ namespace cw3.DAL
                     com.Parameters.AddWithValue("Index", request.IndexNumber);
                     dr = com.ExecuteReader();
 
-                    if (dr.Read()) 
+                    if (dr.Read())
                     {
                         dr.Close();
                         tran.Rollback();
@@ -127,8 +127,8 @@ namespace cw3.DAL
 
                     //3. Ostatni wpis w tabeli Enrollments zgodny ze studiami studenta - Semester = 1
                     com.CommandText = "Select IdEnrollment FROM Enrollment WHERE Semester = 1 AND IdStudy =" + idstudies;
-                    dr = com.ExecuteReader(); 
-                    if (dr.Read()) 
+                    dr = com.ExecuteReader();
+                    if (dr.Read())
                     {
 
                         IdEnrollment = ((int)dr["IdEnrollment"]);
@@ -139,7 +139,7 @@ namespace cw3.DAL
                     {
                         dr.Close();
                         com.CommandText = "Select IdEnrollment FROM Enrollment WHERE IdEnrollment = (Select MAX(IdEnrollment) FROM Enrollment)";
-                        dr = com.ExecuteReader(); 
+                        dr = com.ExecuteReader();
                         dr.Read();
                         IdEnrollment = ((int)dr["IdEnrollment"]) + 1;
                         dr.Close();
@@ -192,16 +192,16 @@ namespace cw3.DAL
             {
 
                 com.Connection = con;
-                con.Open(); 
-                var tran = con.BeginTransaction(); 
+                con.Open();
+                var tran = con.BeginTransaction();
 
-                com.CommandText = "EXEC PROMOTESTUDENTS @STUDIES = @studies, @SEMESTER = @semester;"; 
+                com.CommandText = "EXEC PROMOTESTUDENTS @STUDIES = @studies, @SEMESTER = @semester;";
 
-                com.Parameters.AddWithValue("studies", studies);  
-                com.Parameters.AddWithValue("semester", semester);  
+                com.Parameters.AddWithValue("studies", studies);
+                com.Parameters.AddWithValue("semester", semester);
 
-                com.Transaction = tran; 
-                var dr = com.ExecuteReader(); 
+                com.Transaction = tran;
+                var dr = com.ExecuteReader();
                 int idEnrollment;
 
 
@@ -227,6 +227,25 @@ namespace cw3.DAL
                 tran.Commit();
 
                 return enrollment;
+            }
+        }
+        //cw6
+        public bool IsExistingStudent(string id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(sqlConnectionData))
+            using (SqlCommand command = new SqlCommand())
+            {
+                command.Connection = connection;
+                command.CommandText = "SELECT FirstName from Student where IndexNumber=@index";
+                command.Parameters.AddWithValue("index", id);
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.Read())
+                {
+                    return true;
+                }
+                return false;
             }
         }
     }

@@ -1,0 +1,170 @@
+LOG[METHOD]: GET
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IdStudent": 1,
+	"Firstname": "Jan",
+	"Lastname": "Kowalski",
+	"Studies": "IT"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IdStudent": 1,
+	"Firstname": "Jan",
+	"Lastname": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"Firstname": "Jan",
+	"Lastname": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/enrollments
+LOG[QUERY]: 
+LOG[BODY]: {
+	"IndexNumber": "s123456",
+	"FirstName": "Jan",
+	"LastName": "Kowalski",
+	"BirthDate": "2015-03-11T18:10:00",
+	"Studies": "Testo"
+}
+

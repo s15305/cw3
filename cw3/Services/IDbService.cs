@@ -11,9 +11,11 @@ namespace cw3.DAL
     {
 
         // IEnumerable<Student> GetStudents();
-        // IEnumerable<Enrollment> GetStudent(int id);
+       //  IEnumerable<Enrollment> GetStudent(int id);
         //5
         Enrollment EnrollStudent(EnrollStudentRequest request);
         Enrollment PromoteStudents(int semester, string studies);
+        //6
+        bool IsExistingStudent(string id);
     }
 }

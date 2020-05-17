@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using cw3.Middlewares;
 
 namespace cw3
 {
@@ -25,8 +27,9 @@ namespace cw3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IDbService, DbService>();
+            services.AddScoped<IDbService, DbService>();
             services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +40,29 @@ namespace cw3
                 app.UseDeveloperExceptionPage();
             }
             app.UseDeveloperExceptionPage();
+
+            app.UseMiddleware<LoggingMiddleware>();
+
+            app.Use(async (context, next) => {
+                if (!context.Request.Headers.ContainsKey("Index"))
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsync("Index of the user should be set in header");
+                    return;
+                }
+
+                var index = context.Request.Headers["Index"].ToString();
+
+                DbService studentDbService = new DbService();
+
+                if (!studentDbService.IsExistingStudent(index))
+                {
+                    context.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await context.Response.WriteAsync("Index does not exist in database");
+                    return;
+                }
+                await next();
+            });
 
             app.UseRouting();
 
