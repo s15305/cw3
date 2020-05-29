@@ -1,7 +1,13 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.IdentityModel.Tokens;
+using cw3.DTOs.Requests;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
 using cw3.DAL;
 using cw3.Models;
@@ -15,10 +21,11 @@ namespace cw3.Controllers
     {
         
          private readonly IDbService _dbService;
-
-        public StudentsController (IDbService dbService)
+        private readonly IDataProtectionProvider _provider;
+        public StudentsController (IDbService dbService, IDataProtectionProvider provider)
         {
             _dbService = dbService;
+            _provider = provider;
         }
 
        /* stare
@@ -53,6 +60,75 @@ namespace cw3.Controllers
         {
             return Ok("Usuwanie ukończone");
         }
+        [HttpPost("login")]
+        public IActionResult Login(LoginRequest login)
+        {
+            var student = _dbService.GetStudents().First(s => s.IndexNumber == login.Index);
+            var protector = _provider.CreateProtector(Environment.GetEnvironmentVariable("PASSWORD_SECRET"));
+
+            if (student == null || login.Password != protector.Unprotect(student.Password))
+            {
+                return BadRequest();
+            }
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, "s1"),
+                new Claim(ClaimTypes.Role, "employee"),
+                new Claim(ClaimTypes.Role, "student"),
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT__KEY")));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                "https://localhost",
+                "https://localhost",
+                claims,
+                expires: DateTime.Now.AddMinutes(15),
+                signingCredentials: credentials
+            );
+
+            var refreshToken = Guid.NewGuid().ToString();
+            _dbService.getRefreshTokens().Add(refreshToken, claims);
+
+            return Ok(new
+            {
+                token,
+                refreshToken
+            });
+
+        }
+
+        [HttpPost("refresh")]
+        public IActionResult Refresh([FromBody] string refreshToken)
+        {
+            var tokens = _dbService.getRefreshTokens();
+            if (!tokens.ContainsKey(refreshToken))
+            {
+                return BadRequest();
+            }
+            var claims = tokens[refreshToken];
+            tokens.Remove(refreshToken);
+            var secret = Environment.GetEnvironmentVariable("JWT__KEY");
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                "https://localhost",
+                "https://localhost",
+                claims,
+                expires: DateTime.Now.AddMinutes(10),
+                signingCredentials: credentials
+            );
+
+            var newRefreshToken = Guid.NewGuid().ToString();
+            tokens.Add(newRefreshToken, claims);
+            return Ok(new
+            {
+                token,
+                refreshToken = newRefreshToken
+            });
+        }
     }
 }
- 

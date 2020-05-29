@@ -168,3 +168,241 @@ LOG[BODY]: {
 	"Studies": "Testo"
 }
 
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"idStudent": 1,
+	"firstName": "Bartlomiej",
+	"lastName": "Noweta"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"Index": "1",
+	"Password": "test"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"Index": "1",
+	"Password": "test"
+}
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"Index": "1",
+	"Password": "testtest"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"Index": "1",
+	"Password": "testtest"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: POST
+LOG[PATH]: /api/students/login
+LOG[QUERY]: 
+LOG[BODY]: {
+	"Index": "1",
+	"Password": "testtest"
+}
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /
+LOG[QUERY]: 
+LOG[BODY]: 
+
+LOG[METHOD]: GET
+LOG[PATH]: /favicon.ico
+LOG[QUERY]: 
+LOG[BODY]: 

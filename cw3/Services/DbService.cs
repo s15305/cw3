@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using cw3.DTOs.Requests;
 using cw3.Models;
@@ -11,9 +12,10 @@ namespace cw3.DAL
     public class DbService : IDbService
     {
         private string sqlConnectionData = "Data Source=(localdb)\\db-mssql;Initial Catalog=s15305;Integrated Security=True";
+        private Dictionary<string, Claim[]> tokens = new Dictionary<string, Claim[]>();
 
         //cw4 Miłe wspomnienia 
-        /* public IEnumerable<Student> GetStudents()
+        public IEnumerable<Student> GetStudents()
           {
               var output = new List<Student>();
               using (var connection = new SqlConnection(sqlConnectionData))
@@ -33,6 +35,7 @@ namespace cw3.DAL
                               LastName = dr["LastName"].ToString(),
                               BirthDate = DateTime.Parse(dr["BirthDate"].ToString()),
                               IdEnrollment = int.Parse(dr["IdEnrollment"].ToString()),
+                              Password = dr["Password"].ToString(),
                           });
                       }
                   }
@@ -68,7 +71,7 @@ namespace cw3.DAL
                       return enrollments;
                   }
               }
-          }*/
+          }
         //cw5 Miłe wspomnienia
         public Enrollment EnrollStudent(EnrollStudentRequest request)
         {
@@ -247,6 +250,11 @@ namespace cw3.DAL
                 }
                 return false;
             }
+        }
+
+        public Dictionary<string, Claim[]> getRefreshTokens()
+        {
+            return tokens;
         }
     }
 }
