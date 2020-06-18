@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace cw3.Models
 {
-    public class Student
+    public partial class Student
     {
         //public int IdStudnet { get; set; }
         public string IndexNumber { get; set; }
@@ -24,5 +24,7 @@ namespace cw3.Models
          */
 
         internal string Password;
+
+        public virtual Enrollment IdEnrollmentNavigation { get; set; }
     }
 }

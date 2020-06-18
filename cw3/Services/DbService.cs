@@ -33,7 +33,7 @@ namespace cw3.DAL
                               IndexNumber = dr["IndexNumber"].ToString(),
                               FirstName = dr["FirstName"].ToString(),
                               LastName = dr["LastName"].ToString(),
-                              BirthDate = DateTime.Parse(dr["BirthDate"].ToString()),
+                              BirthDate = new DateTime(),
                               IdEnrollment = int.Parse(dr["IdEnrollment"].ToString()),
                               Password = dr["Password"].ToString(),
                           });

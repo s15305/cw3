@@ -16,6 +16,10 @@ using cw3.Middlewares;
 using cw3.Services.EncryptionService;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using cw3.Models;
+using cw3.Services.EnrollmentDbEntityContextService;
+using cw3.Services.StudentDbEntityContextService;
+using Microsoft.EntityFrameworkCore;
 
 namespace cw3
 {
@@ -45,10 +49,21 @@ namespace cw3
                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
                   };
               });
+
             services.AddScoped<IDbService, DbService>();
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddControllers();
             services.AddDataProtection();
+            services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IStudentDbEntityContextService, StudentDbEntityContextService>();
+            services.AddScoped<IEnrollmentDbEntityContextService, EnrollmentDbEntityContextService>();
+            services.AddDbContext<s15305Context>(options =>
+            {
+
+                options.UseSqlServer(Configuration.GetConnectionString("DbContext"));
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

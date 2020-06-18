@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using cw3.DAL;
 using cw3.Models;
 using Microsoft.AspNetCore.Mvc;
+using cw3.Services.StudentDbEntityContextService;
 
 namespace cw3.Controllers
 {
@@ -20,27 +21,52 @@ namespace cw3.Controllers
     public class StudentsController : ControllerBase
     {
         
-         private readonly IDbService _dbService;
+        private readonly IDbService _dbService;
         private readonly IDataProtectionProvider _provider;
-        public StudentsController (IDbService dbService, IDataProtectionProvider provider)
+        private readonly IStudentDbEntityContextService _studentDbEntityContextService;
+        public StudentsController (IDbService dbService, IDataProtectionProvider provider, IStudentDbEntityContextService studentDbEntityContextService)
         {
             _dbService = dbService;
             _provider = provider;
+            _studentDbEntityContextService = studentDbEntityContextService;
         }
 
-       /* stare
+       
         [HttpGet]
 
-        public IActionResult GetStudents(string orderBy)
+        public IActionResult GetStudents()
         {
-            return Ok(_dbService.GetStudents());
+            return Ok(_studentDbEntityContextService.GetStudents());
+        }
+
+        [HttpPut]
+        public IActionResult ModifyStudent(Student student)
+        {
+            return Ok(_studentDbEntityContextService.ModifyStudent(student));
+        }
+
+        [HttpPost]
+        public IActionResult AddStudent(Student student)
+        {
+            return Ok(_studentDbEntityContextService.AddStudent(student));
+        }
+
+        [HttpDelete("{index}")]
+        public IActionResult DeleteStudent(string index)
+        {
+            if (_studentDbEntityContextService.DeleteStudent(index) == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
         [HttpGet("enrollment/{numerIndeksu}")]
         public IActionResult GetEnrollmentForStudent(int numerIndeksu)
         {
             return Ok(_dbService.GetStudent(numerIndeksu));
-        }*/
+        }
         [HttpPost]
 
          public IActionResult CreateStudent(Student student)
